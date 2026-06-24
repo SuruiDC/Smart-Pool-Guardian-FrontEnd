@@ -18,11 +18,11 @@ export const routes: Routes = [
     component: LandingPage,
   },
   {
-    path: 'dashboard',
+    path: 'dashboard/:id',
     component: DashboradMain,
   },
   {
-    path: 'piscinas',
+    path: 'piscinas/:id',
     component: PiscinasComponent,
   },
   {

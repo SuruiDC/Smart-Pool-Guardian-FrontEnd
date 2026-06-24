@@ -54,4 +54,11 @@ export class PiscinaService {
     );
   }
 
+  listPiscinas(idUsuario: number) {
+    return this.http.get<PiscinasPorUsuarioDTO[]>(`${this.url}/listar`, {
+      params: {
+        idUsuario: idUsuario.toString()
+      }
+    });
+  }
 }
