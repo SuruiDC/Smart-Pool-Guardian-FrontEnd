@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+* {
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.bg-hero {
+  background-image: url('https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=900&q=80');
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-overlay {
+  background: linear-gradient(to top, rgba(0,0,0,0.75) 40%, rgba(0,0,0,0.15) 100%);
+}
+
+.form-panel {
+  background: linear-gradient(160deg, #f0f8ff 0%, #dbeeff 100%);
+}
+
+.ph-badge {
+  background: white;
+  border: 1.5px solid #bfdbfe;
+}
+
+.temp-badge {
+  background: white;
+  border: 1.5px solid #fecaca;
+}
+
+.btn-submit {
+  background-color: #2563EB;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+}
+
+.btn-submit:hover {
+  background-color: #1d4ed8;
+}
+
+input:focus {
+  outline: none;
+  border-color: #2563EB;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
+}
+
+select:focus {
+  outline: none;
+  border-color: #2563EB;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
+}
+:host {
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background-color: #f3f4f6;
+  padding: 2rem;
+}
