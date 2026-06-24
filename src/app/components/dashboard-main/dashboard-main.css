@@ -137,11 +137,13 @@
 
 .pr:hover{border-color:#9ab5cc}
 
+
 .pr.w{border-left:3px solid #ef9f27;padding-left:11px}
 
 .pr.ok{border-left:3px solid #1d9e75;padding-left:11px}
 
 .pr.cr{border-left:3px solid #e24b4a;padding-left:11px;background:#fff8f8}
+
 
 .pr-l{display:flex;align-items:center;gap:10px}
 

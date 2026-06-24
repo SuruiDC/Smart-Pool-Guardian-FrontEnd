@@ -33,9 +33,6 @@ export class UsuarioInsert implements OnInit {
     this.form.markAllAsTouched();
 
     if (this.form.invalid) {
-      if (this.form.get('terms')?.invalid) {
-        alert('Debes aceptar los términos y condiciones.');
-      }
       return;
     }
 
