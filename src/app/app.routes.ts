@@ -7,6 +7,7 @@ import { DashboradMain } from './components/dashboard-main/dashboard-main';
 import { PiscinasComponent } from './components/piscina-component/piscina-component';
 import { NotificacionComponent } from './components/notificacion-component/notificacion-component';
 import { MedicionComponent } from './components/medicion-component/medicion-component';
+import { GestionUsuarios } from './components/gestion-usuarios/gestion-usuarios';
 import { RolComponent } from './components/rol-component/rol-component';
 
 export const routes: Routes = [
@@ -38,6 +39,10 @@ export const routes: Routes = [
   {
     path: 'mediciones',
     component: MedicionComponent,
+  },
+  {
+    path: 'gestionusuarios',
+    component: GestionUsuarios
   },
   {
     path: 'usuarios',
