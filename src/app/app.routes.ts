@@ -9,6 +9,7 @@ import { NotificacionComponent } from './components/notificacion-component/notif
 import { MedicionComponent } from './components/medicion-component/medicion-component';
 import { GestionUsuarios } from './components/gestion-usuarios/gestion-usuarios';
 import { RolComponent } from './components/rol-component/rol-component';
+import { ReporteComponent } from './components/reporte-component/reporte-component';
 
 export const routes: Routes = [
   {
@@ -42,7 +43,11 @@ export const routes: Routes = [
   },
   {
     path: 'gestionusuarios',
-    component: GestionUsuarios
+    component: GestionUsuarios,
+  },
+  {
+    path: 'reportes',
+    component: ReporteComponent,
   },
   {
     path: 'usuarios',
