@@ -1,0 +1,157 @@
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"
+/>
+<link rel="stylesheet" href="./gestion-usuarios.css" />
+
+<h2 class="sr-only">Gestión de Usuarios — administración de acceso y roles del sistema.</h2>
+
+<div class="app">
+  <app-sidebar-component></app-sidebar-component>
+
+  <div class="main">
+    <app-navbar-component></app-navbar-component>
+
+    <main class="canvas">
+      <div class="phdr">
+        <div class="phdr-l">
+          <h1>Gestión de Usuarios</h1>
+          <p>Administra el acceso y roles de los usuarios del sistema.</p>
+        </div>
+        <div class="phdr-r">
+          <button class="btn-add" (click)="abrirModal()">
+            <i class="ti ti-user-plus" aria-hidden="true"></i> Registrar usuario
+          </button>
+        </div>
+      </div>
+
+      <div class="filter-bar">
+        <div class="filter-left">
+          <select [(ngModel)]="filtroRol" (change)="filtrar()">
+            <option value="">Rol (Todos)</option>
+            <option value="1">User</option>
+            <option value="3">Desarrollador</option>
+            <option value="2">Admin</option>
+          </select>
+          <select [(ngModel)]="filtroEstado" (change)="filtrar()">
+            <option value="">Estado (Todos)</option>
+            <option value="true">Activo</option>
+            <option value="false">Inactivo</option>
+          </select>
+        </div>
+        <span class="filter-count">Mostrando {{ usuariosFiltrados.length }} usuarios</span>
+      </div>
+
+      <div class="table-card">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Rol</th>
+                <th>Estado</th>
+                <th>Celular</th>
+                <th class="th-right">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (u of usuariosFiltrados; track u.usuarioId) {
+                <tr class="trow">
+                  <td>
+                    <div class="user-cell">
+                      <div class="avatar">{{ iniciales(u.nombreUsuario) }}</div>
+                      <span class="user-name">{{ u.nombreUsuario }}</span>
+                    </div>
+                  </td>
+                  <td class="muted">{{ u.email }}</td>
+                  <td>
+                    <span
+                      class="badge"
+                      [class.badge-admin]="u.rol?.rolId === 3"
+                      [class.badge-dev]="u.rol?.rolId === 2"
+                      [class.badge-user]="u.rol?.rolId === 1"
+                    >
+                      {{ nombreRol(u.rol?.rolId) }}
+                    </span>
+                  </td>
+                  <td>
+                    <span class="status" [class.activo]="u.activo" [class.inactivo]="!u.activo">
+                      <span class="dot"></span>
+                      {{ u.activo ? 'Activo' : 'Inactivo' }}
+                    </span>
+                  </td>
+                  <td class="muted">{{ u.numeroCelular }}</td>
+                  <td class="td-right">
+                    <div class="actions">
+                      @if (isDev()) {
+                        <button
+                          class="act-btn danger"
+                          title="Eliminar"
+                          (click)="eliminar(u.usuarioId)"
+                        >
+                          <i class="ti ti-trash" aria-hidden="true"></i>
+                        </button>
+                      }
+                    </div>
+                  </td>
+                </tr>
+              }
+              @if (usuariosFiltrados.length === 0) {
+                <tr>
+                  <td colspan="6" class="empty">No hay usuarios registrados.</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+    <div class="foot">© 2024 Smart Pool Guardian — Todos los derechos reservados</div>
+  </div>
+</div>
+
+@if (mostrarModal()) {
+  <div class="modal-overlay" (click)="cerrarModal()">
+    <div class="modal-card" (click)="$event.stopPropagation()">
+      <div class="modal-hdr">
+        <h2>Registrar Usuario</h2>
+        <button class="modal-close" (click)="cerrarModal()">
+          <i class="ti ti-x"></i>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-field">
+          <label>Nombre de usuario</label>
+          <input type="text" [(ngModel)]="form.nombreUsuario" placeholder="Ej: Carlos Mendoza" />
+        </div>
+        <div class="modal-field">
+          <label>Email</label>
+          <input type="email" [(ngModel)]="form.email" placeholder="carlos@ejemplo.com" />
+        </div>
+        <div class="modal-field">
+          <label>Contraseña</label>
+          <input type="password" [(ngModel)]="form.password" placeholder="Mínimo 8 caracteres" />
+        </div>
+        <div class="modal-field">
+          <label>Número de celular</label>
+          <input type="tel" [(ngModel)]="form.numeroCelular" placeholder="Ej: 999888777" />
+        </div>
+        <div class="modal-field">
+          <label>Rol</label>
+          <select [(ngModel)]="form.rolId">
+            <option [ngValue]="1">User</option>
+            <option [ngValue]="3">Desarrollador</option>
+            <option [ngValue]="2">Admin</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="modal-foot">
+        <button class="btn-cancel" (click)="cerrarModal()">Cancelar</button>
+        <button class="btn-save" (click)="registrar()">Guardar</button>
+      </div>
+    </div>
+  </div>
+}

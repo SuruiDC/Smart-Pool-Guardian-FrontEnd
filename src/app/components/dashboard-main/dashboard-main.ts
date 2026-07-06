@@ -5,7 +5,7 @@ import { PiscinaService } from '../../services/piscina-service';
 import { NotificacionService } from '../../services/notificacion-service';
 import { MedicionService } from '../../services/medicion-service';
 import { RecomendacionService } from '../../services/recomendacion-service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
 import { PiscinasPorUsuarioDTO } from '../../models/dtos/PiscinasPorUsuarioDTO';
 import { NotificacionResponseDTO } from '../../models/response/NotificacionResponseDTO';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -16,7 +16,7 @@ import { UsuarioService } from '../../services/usuario-service';
 
 @Component({
   selector: 'app-dashboard-main',
-  imports: [SidebarComponent, NavbarComponent, CommonModule, DatePipe],
+  imports: [SidebarComponent, NavbarComponent, CommonModule, DatePipe, RouterLink, RouterLinkActive],
   templateUrl: './dashboard-main.html',
   styleUrl: './dashboard-main.css',
 })
