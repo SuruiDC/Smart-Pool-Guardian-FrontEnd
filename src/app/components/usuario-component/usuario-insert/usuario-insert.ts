@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { UsuarioRequestDTO } from '../../../models/request/UsuarioRequestDTO';
 import { UsuarioService } from '../../../services/usuario-service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-usuario-insert',
-  imports: [ReactiveFormsModule ],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './usuario-insert.html',
   styleUrl: './usuario-insert.css',
 })
