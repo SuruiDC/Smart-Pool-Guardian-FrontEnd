@@ -21,11 +21,23 @@ export class UsuarioService {
     return this.http.post(`${this.urlUsuarios}/registrar`, u);
   }
 
+  insertRol(u: UsuarioRequestDTO) {
+    return this.http.post(`${this.urlUsuarios}/registrar`, u);
+  }
+
   login(credentials: JwtRequestDTO): Observable<any> {
     return this.http.post<any>(`${base_url}/login`, credentials);
   }
 
   obtenerInactivos() {
     return this.http.get<any[]>(`${this.urlUsuarios}/reporte-usuarios-inactivos`);
+  }
+
+  listar(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.urlUsuarios}/listar`);
+  }
+
+  eliminar(id: number): Observable<any> {
+    return this.http.delete(`${this.urlUsuarios}/eliminar/${id}`);
   }
 }
